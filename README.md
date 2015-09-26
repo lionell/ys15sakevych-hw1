@@ -56,7 +56,10 @@ Returns array of temperatures which are greater than `tempValue`.
 TempSummaryStatistics summaryStatistics()
 ```
 Returns **immutable** instance of `TempSummaryStatistics` class, which contains information about:
- - ```java double avgTemp``` - Average temperature 
+ - ```java
+   double avgTemp
+   ```
+   - Average temperature 
  - `double devTemp` - Deviation 
  - `double minTemp` - Minimal temperature 
  - `double maxTemp` - Maximal temperature
