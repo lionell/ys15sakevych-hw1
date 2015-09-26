@@ -1,5 +1,4 @@
-# Yandex School 2015
-## Java Homework #1
+# Yandex School 2015: Java Homework #1
 
 Deadline: October 5th, 2015
 
