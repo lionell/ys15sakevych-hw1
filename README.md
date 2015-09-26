@@ -30,22 +30,26 @@ Returns maximal temperature in list.
 double findTempClosestToZero()
 ```
 Returns closest to zero temperature from list.
-> If there are two temperatures with equal distances, returns positive.
+If there are two temperatures with equal distances, returns **positive**.
 
 ---
 ```java
 double findTempClosestToValue(double tempValue)
 ```
+Returns closest to `tempValue` temperature from list.
+If there are two temperatures with equal distances, returns **positive**.
 
 ---
 ```java
 double[] findTempsLessThan(double tempValue)
 ```
+Returns array of temperatures which are less than `tempValue`.
 
 ---
 ```java
 double[] findTempsGreaterThan(double tempValue)
 ```
+Returns array of temperatures which are greater than `tempValue`.
 
 ---
 ```java
@@ -54,7 +58,7 @@ TempSummaryStatistics summaryStatistics()
 
 ---
 ```java
-int addTemps(double ... temps)
+int addTemps(double[] temps)
 ```
 
 ---
