@@ -8,7 +8,9 @@ Deadline: October 5th, 2015
 double average()
 ```
 Evaluates average temperature in list.
-> NOTE. If list is empty throws IllegalArgumentException.
+*Exceptions:* 
+ - IllegalArgumentException
+   > If list is empty.
 
 ```java
 double deviation()
