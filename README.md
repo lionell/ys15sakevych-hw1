@@ -76,6 +76,7 @@ Structure(array-like) used in class TemperatureSeriesAnalysis for storing temper
 
 ---
 **NOTE.** All methods throws `IllegalArgumentException` if the list is empty.
+
 **NOTE.** All comparisons of `double` values uses epsilon `EPS = 5e-7`.
 
 #### Deadline October 5th, 2015
