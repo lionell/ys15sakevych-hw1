@@ -6,47 +6,57 @@
 double average()
 ```
 Evaluates average temperature in list.
+
 ---
 ```java
 double deviation()
 ```
 Evaluates standard deviation of temperature.
+
 ---
 ```java
 double min()
 ```
 Returns minimal temperature in list.
+
 ---
 ```java
 double max()
 ```
 Returns maximal temperature in list.
+
 ---
 ```java
 double findTempClosestToZero()
 ```
 Returns closest to zero temperature from list.
 > If there are two temperatures with equal distances, returns positive.
+
 ---
 ```java
 double findTempClosestToValue(double tempValue)
 ```
+
 ---
 ```java
 double[] findTempsLessThan(double tempValue)
 ```
+
 ---
 ```java
 double[] findTempsGreaterThan(double tempValue)
 ```
+
 ---
 ```java
 TempSummaryStatistics summaryStatistics()
 ```
+
 ---
 ```java
 int addTemps(double ... temps)
 ```
+
 ---
 **NOTE.** All methods throws `IllegalArgumentException` if the list is empty.
 
