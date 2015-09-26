@@ -9,7 +9,7 @@ double average()
 ```
 Evaluates average temperature in list.
 
-*Exceptions:* 
+**Exceptions:** 
  - If list is empty throws `IllegalArgumentException`.
 
 ```java
