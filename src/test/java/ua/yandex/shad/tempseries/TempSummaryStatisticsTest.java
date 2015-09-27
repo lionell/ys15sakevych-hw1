@@ -47,7 +47,7 @@ public class TempSummaryStatisticsTest {
 
         TempSummaryStatistics statistics =
                 new TempSummaryStatistics(avgTemp, devTemp, minTemp, maxTemp);
-        double actualMinTemp = statistics.getAvgTemp();
+        double actualMinTemp = statistics.getMinTemp();
 
         assertEquals(expectedMinTemp, actualMinTemp, EPS);
     }
@@ -62,7 +62,7 @@ public class TempSummaryStatisticsTest {
 
         TempSummaryStatistics statistics =
                 new TempSummaryStatistics(avgTemp, devTemp, minTemp, maxTemp);
-        double actualMaxTemp = statistics.getAvgTemp();
+        double actualMaxTemp = statistics.getMaxTemp();
 
         assertEquals(expectedMaxTemp, actualMaxTemp, EPS);
     }
