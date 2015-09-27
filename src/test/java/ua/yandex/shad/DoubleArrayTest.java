@@ -54,13 +54,64 @@ public class DoubleArrayTest {
         double[] expectedNums = nums.clone();
 
         DoubleArray array = new DoubleArray(nums);
+        nums[0] = 2.0;
         double[] actualNums = array.toArray();
 
         assertArrayEquals(expectedNums, actualNums, EPS);
     }
 
     @Test
-    public void testIsEmpty_defaultConstructor_true() {
+    public void testToArray_emptyArray() {
+        double[] nums = {};
+        double[] expectedNums = {};
+
+        DoubleArray array = new DoubleArray(nums);
+        double[] actualNums = array.toArray();
+
+        assertArrayEquals(expectedNums, actualNums, EPS);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testAt_emptyArray() {
+        double[] nums = {};
+        int index = 0;
+
+        DoubleArray array = new DoubleArray(nums);
+        array.at(index);
+    }
+
+    @Test
+    public void testAt() {
+        double[] nums = {1.0, 2.0, -1.0};
+        int index = 1;
+        double expectedResult = 2.0;
+
+        DoubleArray array = new DoubleArray(nums);
+        double actualResult = array.at(index);
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testAt_negativeIndex() {
+        double[] nums = {1.0, -1.0, 2e-5};
+        int index = -2;
+
+        DoubleArray array = new DoubleArray(nums);
+        array.at(index);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testAt_IndexGreaterThanSizeOfArray() {
+        double[] nums = {1.0, -1.0, 2e-5};
+        int index = 7;
+
+        DoubleArray array = new DoubleArray(nums);
+        array.at(index);
+    }
+
+    @Test
+    public void testIsEmpty_emptyArray_true() {
         boolean expectedResult = true;
 
         DoubleArray array = new DoubleArray();
@@ -70,7 +121,7 @@ public class DoubleArrayTest {
     }
 
     @Test
-    public void testIsEmpty_numsConstructor_false() {
+    public void testIsEmpty_notEmptyArray_false() {
         double[] nums = {1.0, 2.0};
         boolean expectedResult = false;
 

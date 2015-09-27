@@ -66,11 +66,35 @@ public class DoubleArray {
     }
 
     /**
+     * Returns element of DoubleArray on 'index' position.
+     *
+     * @param index number of element in DoubleArray
+     * @return element on 'index' position
+     * @throws IndexOutOfBoundsException if index < 0 or index >= size of DoubleArray
+     */
+    public double at(int index) {
+        checkBounds(index);
+        return data[index];
+    }
+
+    /**
      * Checks if array is empty.
      *
      * @return true if there are no elements in array
      */
     public boolean isEmpty() {
         return size == 0;
+    }
+
+    /**
+     * Checks that index is in right range
+     *
+     * @param index the index to check
+     * @throws IndexOutOfBoundsException if index < 0 or index >= size of DoubleArray
+     */
+    private void checkBounds(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException();
+        }
     }
 }
