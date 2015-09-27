@@ -12,7 +12,7 @@ public class TemperatureSeriesAnalysisTest {
      * Test structure
      *
      * /@Test
-     * public void test[UnitOfWork_StateUnderTest_ExpectedBehavior](){
+     * public void test[UnitOfWork_StateUnderTest_ExpectedBehavior]() {
      *     // Arrange
      *     ...
      *     // Act
@@ -38,9 +38,5 @@ public class TemperatureSeriesAnalysisTest {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
         double actualResult = seriesAnalysis.average();
-    }
-
-    public void testAverage() throws Exception {
-
     }
 }
