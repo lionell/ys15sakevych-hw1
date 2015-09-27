@@ -1,5 +1,7 @@
 package ua.yandex.shad;
 
+import java.util.Arrays;
+
 public class DoubleArray {
 
     /**
@@ -38,7 +40,7 @@ public class DoubleArray {
     }
 
     /**
-     * Construct new DoubleArray from variable length list
+     * Construct new DoubleArray from variable length list.
      *
      * @param nums example of array
      */
@@ -57,12 +59,14 @@ public class DoubleArray {
     }
 
     /**
-     * Converts DoubleArray to array of doubles
+     * Converts DoubleArray to array of doubles.
      *
      * @return new instance of array of double with elements from DoubleArray
      */
     public double[] toArray() {
-        return data.clone();
+        double[] array = new double[size];
+        System.arraycopy(data, 0, array, 0, size);
+        return array;
     }
 
     /**
@@ -92,11 +96,26 @@ public class DoubleArray {
     }
 
     /**
+     * Enlarge array capacity if needed.
+     *
+     * @param minCapacity minimal capacity to fit
+     */
+    public void ensureCapacity(int minCapacity) {
+        if (minCapacity >= data.length) {
+            double[] newData = new double[Math.max(data.length * 2, minCapacity + 1)];
+            System.arraycopy(data, 0, newData, 0, size);
+            data = newData;
+        }
+    }
+
+    /**
      * Adds new element to the end of array
      * @param value value of element to add
      */
     public void add(double value) {
-        // TODO: Implement this method
+        ensureCapacity(size);
+        data[size] = value;
+        size++;
     }
 
     /**
@@ -109,7 +128,7 @@ public class DoubleArray {
     }
 
     /**
-     * Checks that index is in right range
+     * Checks that index is in right range.
      *
      * @param index the index to check
      * @throws IndexOutOfBoundsException

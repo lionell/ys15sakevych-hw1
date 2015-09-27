@@ -145,6 +145,19 @@ public class DoubleArrayTest {
     }
 
     @Test
+    public void testAdd_newArraySize() {
+        double[] nums = {2.0, -1e2, 0.0, 3.0};
+        double newValue = 4.0;
+        int expectedSize = 5;
+
+        DoubleArray array = new DoubleArray(nums);
+        array.add(newValue);
+        int actualSize = array.size();
+
+        assertEquals(expectedSize, actualSize);
+    }
+
+    @Test
     public void testAdd() {
         double[] nums = {2.0, -1e2, 0.0, 3.0};
         double newValue = 4.0;
