@@ -145,6 +145,19 @@ public class DoubleArrayTest {
     }
 
     @Test
+    public void testAdd() {
+        double[] nums = {2.0, -1e2, 0.0, 3.0};
+        double newValue = 4.0;
+        double[] expectedArray = {2.0, -1e2, 0.0, 3.0, 4.0};
+
+        DoubleArray array = new DoubleArray(nums);
+        array.add(newValue);
+        double[] actualArray = array.toArray();
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test
     public void testIsEmpty_emptyArray_true() {
         boolean expectedResult = true;
 

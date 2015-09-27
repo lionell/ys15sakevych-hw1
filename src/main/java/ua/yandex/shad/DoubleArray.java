@@ -92,6 +92,14 @@ public class DoubleArray {
     }
 
     /**
+     * Adds new element to the end of array
+     * @param value value of element to add
+     */
+    public void add(double value) {
+        // TODO: Implement this method
+    }
+
+    /**
      * Checks if array is empty.
      *
      * @return true if there are no elements in array
