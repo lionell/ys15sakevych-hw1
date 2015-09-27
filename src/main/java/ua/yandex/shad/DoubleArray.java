@@ -70,7 +70,8 @@ public class DoubleArray {
      *
      * @param index number of element in DoubleArray
      * @return element on 'index' position
-     * @throws IndexOutOfBoundsException if index < 0 or index >= size of DoubleArray
+     * @throws IndexOutOfBoundsException
+     *         if index < 0 or index >= size of DoubleArray
      */
     public double at(int index) {
         checkBounds(index);
@@ -90,7 +91,8 @@ public class DoubleArray {
      * Checks that index is in right range
      *
      * @param index the index to check
-     * @throws IndexOutOfBoundsException if index < 0 or index >= size of DoubleArray
+     * @throws IndexOutOfBoundsException
+     *         if index < 0 or index >= size of DoubleArray
      */
     private void checkBounds(int index) {
         if (index < 0 || index >= size) {
