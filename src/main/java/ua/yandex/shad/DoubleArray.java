@@ -32,7 +32,7 @@ public class DoubleArray {
     /**
      * Construct new DoubleArray with default capacity.
      */
-    private DoubleArray() {
+    public DoubleArray() {
         this(DEFAULT_CAPACITY);
     }
 
@@ -40,7 +40,7 @@ public class DoubleArray {
      *
      *
      */
-    private DoubleArray(double... nums) {
+    public DoubleArray(double... nums) {
         data = nums.clone();
         size = nums.length;
     }
