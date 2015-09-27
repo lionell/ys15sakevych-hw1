@@ -61,7 +61,7 @@ public class DoubleArray {
      * @return new instance of array of double with elements from DoubleArray
      */
     public double[] toArray() {
-        return new double[]{};
+        return data.clone();
     }
 
     /**
