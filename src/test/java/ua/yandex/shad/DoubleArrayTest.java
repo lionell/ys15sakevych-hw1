@@ -28,13 +28,23 @@ public class DoubleArrayTest {
     }
 
     @Test
-    public void testDefaultConstructor() {
+    public void testDefaultConstructor_size() {
         int expectedSize = 0;
 
         DoubleArray array = new DoubleArray();
         int actualSize = array.size();
 
         assertEquals(expectedSize, actualSize);
+    }
+
+    @Test
+    public void testDefaultConstructor_capacity() {
+        int expectedCapacity = 10;
+
+        DoubleArray array = new DoubleArray();
+        int actualCapacity = array.capacity();
+
+        assertEquals(expectedCapacity, actualCapacity);
     }
 
     @Test
@@ -46,6 +56,17 @@ public class DoubleArrayTest {
         int actualSize = array.size();
 
         assertEquals(expectedSize, actualSize);
+    }
+
+    @Test
+    public void testNumsConstructor_capacity() {
+        double[] nums = {1.0, 2.0, -1.0};
+        int expectedCapacity = 3;
+
+        DoubleArray array = new DoubleArray(nums);
+        int actualCapacity = array.capacity();
+
+        assertEquals(expectedCapacity, actualCapacity);
     }
 
     @Test
@@ -145,7 +166,46 @@ public class DoubleArrayTest {
     }
 
     @Test
-    public void testAdd_newArraySize() {
+    public void testEnsureCapacity_minCapacityIsLessThanCurrent() {
+        double[] nums = {2.0, -1e2, 0.0, 3.0};
+        int minCapacity = 3;
+        int expectedCapacity = 4;
+
+        DoubleArray array = new DoubleArray(nums);
+        array.ensureCapacity(minCapacity);
+        int actualCapacity = array.capacity();
+
+        assertEquals(expectedCapacity, actualCapacity);
+    }
+
+    @Test
+    public void testEnsureCapacity_minCapacityIsLessThanDoubledCurrent() {
+        double[] nums = {2.0, -1e2, 0.1, 3.0};
+        int minCapacity = 5;
+        int expectedCapacity = 8;
+
+        DoubleArray array = new DoubleArray(nums);
+        array.ensureCapacity(minCapacity);
+        int actualCapacity = array.capacity();
+
+        assertEquals(expectedCapacity, actualCapacity);
+    }
+
+    @Test
+    public void testEnsureCapacity_minCapacityIsMoreThanDoubledCurrent() {
+        double[] nums = {2.0, -1e2, 1.0, 3.0};
+        int minCapacity = 15;
+        int expectedCapacity = 15;
+
+        DoubleArray array = new DoubleArray(nums);
+        array.ensureCapacity(minCapacity);
+        int actualCapacity = array.capacity();
+
+        assertEquals(expectedCapacity, actualCapacity);
+    }
+
+    @Test
+    public void testAdd_arraySize() {
         double[] nums = {2.0, -1e2, 0.0, 3.0};
         double newValue = 4.0;
         int expectedSize = 5;
@@ -158,7 +218,20 @@ public class DoubleArrayTest {
     }
 
     @Test
-    public void testAdd() {
+    public void testAdd_arrayCapacity() {
+        double[] nums = {2.0, -1e2, 0.0, 3.0};
+        double newValue = 4.0;
+        int expectedCapacity = 8;
+
+        DoubleArray array = new DoubleArray(nums);
+        array.add(newValue);
+        int actualCapacity = array.capacity();
+
+        assertEquals(expectedCapacity, actualCapacity);
+    }
+
+    @Test
+    public void testAdd_array() {
         double[] nums = {2.0, -1e2, 0.0, 3.0};
         double newValue = 4.0;
         double[] expectedArray = {2.0, -1e2, 0.0, 3.0, 4.0};

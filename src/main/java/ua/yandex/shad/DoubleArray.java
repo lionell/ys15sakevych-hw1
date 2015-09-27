@@ -97,10 +97,11 @@ public class DoubleArray {
      * Enlarge array capacity if needed.
      *
      * @param minCapacity minimal capacity to fit
+     * NOTE! element with index minCapacity is unreachable.
      */
     public void ensureCapacity(int minCapacity) {
-        if (minCapacity >= data.length) {
-            int newSize = Math.max(data.length * 2, minCapacity + 1);
+        if (minCapacity > data.length) {
+            int newSize = Math.max(data.length * 2, minCapacity);
             double[] newData = new double[newSize];
             System.arraycopy(data, 0, newData, 0, size);
             data = newData;
@@ -112,7 +113,7 @@ public class DoubleArray {
      * @param value value of element to add
      */
     public void add(double value) {
-        ensureCapacity(size);
+        ensureCapacity(size + 1);
         data[size] = value;
         size++;
     }
@@ -137,5 +138,14 @@ public class DoubleArray {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
+    }
+
+    /**
+     * Package private method used in Tests.
+     *
+     * @return capacity of array
+     */
+    int capacity() {
+        return data.length;
     }
 }
