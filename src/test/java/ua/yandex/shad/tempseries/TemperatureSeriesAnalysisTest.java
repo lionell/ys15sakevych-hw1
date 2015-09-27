@@ -21,7 +21,7 @@ public class TemperatureSeriesAnalysisTest {
     /**
      * Used in double comparison
      */
-    public static final double EPS = 5e-7;
+    public static final double EPS = 5e-5;
 
     /*@Test
     public void testAverage_SingleElementList() {

@@ -37,8 +37,9 @@ public class DoubleArray {
     }
 
     /**
+     * Construct new DoubleArray from variable length list
      *
-     *
+     * @param nums example of array
      */
     public DoubleArray(double... nums) {
         data = nums.clone();
@@ -52,6 +53,15 @@ public class DoubleArray {
      */
     public int size() {
         return size;
+    }
+
+    /**
+     * Converts DoubleArray to array of doubles
+     *
+     * @return new instance of array of double with elements from DoubleArray
+     */
+    public double[] toArray() {
+        return new double[]{};
     }
 
     /**
