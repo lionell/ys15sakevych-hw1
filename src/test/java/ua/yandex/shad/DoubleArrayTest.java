@@ -102,12 +102,46 @@ public class DoubleArrayTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testGet_IndexGreaterThanSizeOfArray() {
+    public void testGet_indexGreaterThanSizeOfArray() {
         double[] nums = {1.0, -1.0, 2e-5};
         int index = 7;
 
         DoubleArray array = new DoubleArray(nums);
         array.get(index);
+    }
+
+    @Test
+    public void testSet() {
+        double[] nums = {1.0, 22.0, -1.0};
+        int index = 1;
+        double newValue = -0.7;
+        double[] expectedArray = {1.0, -0.7, -1.0};
+
+        DoubleArray array = new DoubleArray(nums);
+        array.set(index, newValue);
+        double[] actualArray = array.toArray();
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testSet_negativeIndex() {
+        double[] nums = {1.0, 2e-5, -2e-5};
+        int index = -7;
+        double newValue = 0.6;
+
+        DoubleArray array = new DoubleArray(nums);
+        array.set(index, newValue);
+    }
+
+    @Test(expected = IndexOutOfBoundsException.class)
+    public void testSet_indexGreaterThanSizeOfArray() {
+        double[] nums = {0.0, 2e-5, -2e-5};
+        int index = 4;
+        double newValue = -4.5;
+
+        DoubleArray array = new DoubleArray(nums);
+        array.set(index, newValue);
     }
 
     @Test

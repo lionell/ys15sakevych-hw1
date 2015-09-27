@@ -79,6 +79,19 @@ public class DoubleArray {
     }
 
     /**
+     * Set element of DoubleArray on 'index' position to 'value'.
+     *
+     * @param index number of element in DoubleArray
+     * @param value new value of element on 'index' position
+     * @throws IndexOutOfBoundsException
+     *         if index < 0 or index >= size of DoubleArray
+     */
+    public void set(int index, double value) {
+        checkBounds(index);
+        data[index] = value;
+    }
+
+    /**
      * Checks if array is empty.
      *
      * @return true if there are no elements in array
