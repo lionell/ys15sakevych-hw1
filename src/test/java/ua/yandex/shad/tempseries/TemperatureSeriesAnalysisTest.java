@@ -6,6 +6,12 @@ import org.junit.Test;
 public class TemperatureSeriesAnalysisTest {
     
     @Test
+    public void testAverage_SingleElementList() {
+    	double[] temperatureSeries = {1.0};
+    	TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+    }
+
+    @Test
     public void testAverage() {
         double[] temperatureSeries = {1.0, -5.0, 1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
