@@ -5,22 +5,22 @@ public class TempSummaryStatistics {
     /**
      * Average temperature from array.
      */
-    public double avgTemp;
+    private double avgTemp;
 
     /**
      * Deviation of temperatures from array.
      */
-    public double devTemp;
+    private double devTemp;
 
     /**
      * Minimal temperature from array.
      */
-    public double minTemp;
+    private double minTemp;
 
     /**
      * Maximal temperature from array.
      */
-    public double maxTemp;
+    private double maxTemp;
 
     /**
      * Constructs object with fields based on data.
