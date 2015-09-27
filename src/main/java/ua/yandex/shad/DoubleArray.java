@@ -24,8 +24,9 @@ public class DoubleArray {
      * @throws IllegalArgumentException if capacity is negative
      */
     public DoubleArray(int capacity) {
-        if (capacity < 0)
+        if (capacity < 0) {
             throw new IllegalArgumentException();
+        }
         data = new double[capacity];
     }
 

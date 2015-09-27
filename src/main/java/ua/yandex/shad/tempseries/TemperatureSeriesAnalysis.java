@@ -2,9 +2,13 @@ package ua.yandex.shad.tempseries;
 
 public class TemperatureSeriesAnalysis {    
 
-    public TemperatureSeriesAnalysis() {}
+    public TemperatureSeriesAnalysis() {
+
+    }
     
-    public TemperatureSeriesAnalysis(double[] temperatureSeries) {}
+    public TemperatureSeriesAnalysis(double[] temperatureSeries) {
+
+    }
     
     public double average() {
         return 0;
