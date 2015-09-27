@@ -1,7 +1,5 @@
 package ua.yandex.shad;
 
-import java.util.Arrays;
-
 public class DoubleArray {
 
     /**
