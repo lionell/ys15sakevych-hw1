@@ -4,22 +4,43 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TemperatureSeriesAnalysisTest {
-    
+
+    // const EPS is used to compare doubles
+    public static final double EPS = 5e-7;
+
+    /**
+     * Test structure
+     *
+     * /@Test
+     * public void test[UnitOfWork_StateUnderTest_ExpectedBehavior](){
+     *     // Arrange
+     *     ...
+     *     // Act
+     *     ...
+     *     // Assert
+     * }
+     */
+
     @Test
     public void testAverage_SingleElementList() {
     	double[] temperatureSeries = {1.0};
-    	TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 1.0;
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+
+        double actualResult = seriesAnalysis.average();
+
+        assertEquals(expResult, actualResult, EPS);
     }
 
-    @Test
-    public void testAverage() {
-        double[] temperatureSeries = {1.0, -5.0, 1.0, 5.0};
+    @Test(expected = IllegalArgumentException.class)
+    public void testAverage_FailOnEmptyList() {
+        double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
-        double expResult = 0.0;
+
         double actualResult = seriesAnalysis.average();
-        
-        assertEquals(expResult, actualResult, 0.00001);
-        
     }
-    
+
+    public void testAverage() throws Exception {
+
+    }
 }
