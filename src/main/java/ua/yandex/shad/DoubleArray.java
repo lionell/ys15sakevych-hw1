@@ -73,7 +73,7 @@ public class DoubleArray {
      * @throws IndexOutOfBoundsException
      *         if index < 0 or index >= size of DoubleArray
      */
-    public double at(int index) {
+    public double get(int index) {
         checkBounds(index);
         return data[index];
     }

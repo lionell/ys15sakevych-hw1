@@ -72,42 +72,42 @@ public class DoubleArrayTest {
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testAt_emptyArray() {
+    public void testGet_emptyArray() {
         double[] nums = {};
         int index = 0;
 
         DoubleArray array = new DoubleArray(nums);
-        array.at(index);
+        array.get(index);
     }
 
     @Test
-    public void testAt() {
+    public void testGet() {
         double[] nums = {1.0, 2.0, -1.0};
         int index = 1;
         double expectedResult = 2.0;
 
         DoubleArray array = new DoubleArray(nums);
-        double actualResult = array.at(index);
+        double actualResult = array.get(index);
 
         assertEquals(expectedResult, actualResult, EPS);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testAt_negativeIndex() {
+    public void testGet_negativeIndex() {
         double[] nums = {1.0, -1.0, 2e-5};
         int index = -2;
 
         DoubleArray array = new DoubleArray(nums);
-        array.at(index);
+        array.get(index);
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void testAt_IndexGreaterThanSizeOfArray() {
+    public void testGet_IndexGreaterThanSizeOfArray() {
         double[] nums = {1.0, -1.0, 2e-5};
         int index = 7;
 
         DoubleArray array = new DoubleArray(nums);
-        array.at(index);
+        array.get(index);
     }
 
     @Test
