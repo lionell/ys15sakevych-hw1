@@ -3,6 +3,19 @@ package ua.yandex.shad.tempseries;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+/**
+ * Test structure
+ *
+ * /@Test
+ * public void test[UnitOfWork_StateUnderTest_ExpectedBehavior]() {
+ *     // Arrange
+ *     ...
+ *     // Act
+ *     ...
+ *     // Assert
+ * }
+ */
+
 public class TempSummaryStatisticsTest {
 
     public static final double EPS = 5e-5;
