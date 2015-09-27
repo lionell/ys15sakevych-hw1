@@ -23,7 +23,7 @@ public class TemperatureSeriesAnalysisTest {
      */
     public static final double EPS = 5e-7;
 
-    @Test
+    /*@Test
     public void testAverage_SingleElementList() {
         double[] temperatureSeries = {1.0};
         double expResult = 1.0;
@@ -40,5 +40,5 @@ public class TemperatureSeriesAnalysisTest {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 
         double actualResult = seriesAnalysis.average();
-    }
+    }*/
 }

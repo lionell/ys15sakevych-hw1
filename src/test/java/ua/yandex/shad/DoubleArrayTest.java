@@ -21,7 +21,7 @@ public class DoubleArrayTest {
     @Test
     public void testDoubleArray_defaultConstructor_zeroSize() {
         DoubleArray array = new DoubleArray();
-        int expectedSize = 1;
+        int expectedSize = 0;
         int actualSize = array.size();
 
         assertEquals(expectedSize, actualSize);
