@@ -100,7 +100,8 @@ public class DoubleArray {
      */
     public void ensureCapacity(int minCapacity) {
         if (minCapacity >= data.length) {
-            double[] newData = new double[Math.max(data.length * 2, minCapacity + 1)];
+            int newSize = Math.max(data.length * 2, minCapacity + 1);
+            double[] newData = new double[newSize];
             System.arraycopy(data, 0, newData, 0, size);
             data = newData;
         }
