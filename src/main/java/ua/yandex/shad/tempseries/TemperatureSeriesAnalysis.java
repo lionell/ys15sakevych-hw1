@@ -20,7 +20,8 @@ public class TemperatureSeriesAnalysis {
     }
     
     public double average() {
-        return 0;
+        checkEmptyArray();
+        return array.get(0);
     }    
     
     public double deviation() {
@@ -60,7 +61,7 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
-     * Package private method used in tests
+     * Package private method used in tests.
      *
      * @return array with stored data
      */
@@ -69,13 +70,29 @@ public class TemperatureSeriesAnalysis {
     }
 
     /**
+     * Checks lower bound of element in a given array.
      *
+     * @param temps given array
+     * @throws InputMismatchException
+     *         if in array exists temp lower than LOWER_BOUND
      */
     private void checkLowerBound(double[] temps) {
         for (double temp : temps) {
             if (temp < LOWER_BOUND) {
                 throw new InputMismatchException();
             }
+        }
+    }
+
+    /**
+     * Checks if array is empty.
+     *
+     * @throws IllegalArgumentException
+     *         if array is empty
+     */
+    private void checkEmptyArray() {
+        if (array.size() == 0) {
+            throw new IllegalArgumentException();
         }
     }
 }

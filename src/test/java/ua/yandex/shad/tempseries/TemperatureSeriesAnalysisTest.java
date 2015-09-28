@@ -88,4 +88,23 @@ public class TemperatureSeriesAnalysisTest {
 
         assertArrayEquals(expectedArray, actualArray, EPS);
     }
+
+    @Test
+    public void testAverage_arrayWithOneTemp() {
+        double[] temps = {1.0};
+        double expectedResult = 1.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.average();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testAverage_emptyArray() {
+        double[] temps = {};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        analysis.average();
+    }
 }
