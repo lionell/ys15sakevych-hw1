@@ -21,7 +21,11 @@ public class TemperatureSeriesAnalysis {
     
     public double average() {
         checkEmptyArray();
-        return array.get(0);
+        double sum = 0.0;
+        for (int i = 0; i < array.size(); ++i) {
+            sum += array.get(i);
+        }
+        return (sum / array.size());
     }    
     
     public double deviation() {
