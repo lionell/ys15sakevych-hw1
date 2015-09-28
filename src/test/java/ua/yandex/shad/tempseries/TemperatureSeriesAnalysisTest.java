@@ -3,6 +3,8 @@ package ua.yandex.shad.tempseries;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
+import java.util.InputMismatchException;
+
 /**
  * Test structure
  *
@@ -23,22 +25,67 @@ public class TemperatureSeriesAnalysisTest {
      */
     public static final double EPS = 5e-5;
 
-    /*@Test
-    public void testAverage_SingleElementList() {
-        double[] temperatureSeries = {1.0};
-        double expResult = 1.0;
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+    @Test
+    public void testDefaultConstructor_size() {
+        int expectedSize = 0;
 
-        double actualResult = seriesAnalysis.average();
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis();
+        int actualSize = analysis.getArray().length;
 
-        assertEquals(expResult, actualResult, EPS);
+        assertEquals(expectedSize, actualSize);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testAverage_FailOnEmptyList() {
-        double[] temperatureSeries = {};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+    @Test
+    public void testTemperatureSeriesConstructor_size() {
+        double[] temps = {1.0, -1.0, 2.0};
+        int expectedSize = 3;
 
-        double actualResult = seriesAnalysis.average();
-    }*/
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        int actualSize = analysis.getArray().length;
+
+        assertEquals(expectedSize, actualSize);
+    }
+
+    @Test
+    public void testTempsConstructor_array() {
+        double[] temps = {1.0, -1.0, 2.0};
+        double[] expectedArray = {1.0, -1.0, 2.0};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double[] actualArray = analysis.getArray();
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test
+    public void testTempsConstructor_modifyTempsArrayAfter() {
+        double[] temps = {1.0, -1.0, 2.0};
+        int index = 2;
+        double newValue = -1.1;
+        double[] expectedArray = {1.0, -1.0, 2.0};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        temps[index] = newValue;
+        double[] actualArray = analysis.getArray();
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test(expected = InputMismatchException.class)
+    public void testTempsConstructor_tempOutOfUpperBound() {
+        double[] temps = {1.0, -274.0, 2.0};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+    }
+
+    @Test
+    public void testTempsConstructor_upperBoundTemp() {
+        double[] temps = {-273.0, -1.0, 2.0};
+        double[] expectedArray = {-273.0, -1.0, 2.0};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double[] actualArray = analysis.getArray();
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
 }

@@ -1,13 +1,22 @@
 package ua.yandex.shad.tempseries;
 
-public class TemperatureSeriesAnalysis {    
+import ua.yandex.shad.DoubleArray;
+
+import java.util.InputMismatchException;
+
+public class TemperatureSeriesAnalysis {
+
+    public static final double lowerBound = -273;
+
+    private DoubleArray array;
 
     public TemperatureSeriesAnalysis() {
-
+        array = new DoubleArray();
     }
     
-    public TemperatureSeriesAnalysis(double[] temperatureSeries) {
-
+    public TemperatureSeriesAnalysis(double[] temps) {
+        checkLowerBound(temps);
+        array = new DoubleArray(temps);
     }
     
     public double average() {
@@ -48,5 +57,25 @@ public class TemperatureSeriesAnalysis {
     
     public int addTemps(double[] temps) {
         return 0;
+    }
+
+    /**
+     * Package private method used in tests
+     *
+     * @return array with stored data
+     */
+    double[] getArray() {
+        return array.toArray();
+    }
+
+    /**
+     *
+     */
+    private void checkLowerBound(double[] temps) {
+        for (double temp : temps) {
+            if (temp < lowerBound) {
+                throw new InputMismatchException();
+            }
+        }
     }
 }
