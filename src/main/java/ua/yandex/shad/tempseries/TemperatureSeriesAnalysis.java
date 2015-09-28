@@ -1,6 +1,6 @@
 package ua.yandex.shad.tempseries;
 
-import ua.yandex.shad.DoubleArray;
+import io.github.lionell.DoubleArray;
 
 import java.util.InputMismatchException;
 

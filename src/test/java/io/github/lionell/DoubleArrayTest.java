@@ -1,4 +1,4 @@
-package ua.yandex.shad;
+package io.github.lionell;
 
 import static org.junit.Assert.*;
 import org.junit.Test;

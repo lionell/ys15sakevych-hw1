@@ -1,4 +1,4 @@
-package ua.yandex.shad;
+package io.github.lionell;
 
 public class DoubleArray {
 
