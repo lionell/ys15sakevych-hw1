@@ -118,4 +118,34 @@ public class TemperatureSeriesAnalysisTest {
         TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
         analysis.average();
     }
+
+    @Test
+    public void testDeviation_arrayWithOneTemp() {
+        double[] temps = {-7.0};
+        double expectedResult = 0.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.deviation();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test
+    public void testDeviation_correctResult() {
+        double[] temps = {1.0, -2.0, 3.0, 0.0};
+        double expectedResult = 0.5;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.deviation();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testDeviation_emptyArray() {
+        double[] temps = {};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        analysis.deviation();
+    }
 }
