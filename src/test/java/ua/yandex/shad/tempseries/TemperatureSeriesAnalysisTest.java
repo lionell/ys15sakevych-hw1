@@ -72,14 +72,14 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test(expected = InputMismatchException.class)
-    public void testTempsConstructor_tempOutOfUpperBound() {
+    public void testTempsConstructor_tempOutOfLowerBound() {
         double[] temps = {1.0, -274.0, 2.0};
 
         TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
     }
 
     @Test
-    public void testTempsConstructor_upperBoundTemp() {
+    public void testTempsConstructor_exactLowerBoundTemp() {
         double[] temps = {-273.0, -1.0, 2.0};
         double[] expectedArray = {-273.0, -1.0, 2.0};
 

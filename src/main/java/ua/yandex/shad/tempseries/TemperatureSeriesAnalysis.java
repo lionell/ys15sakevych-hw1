@@ -6,7 +6,7 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
 
-    public static final double lowerBound = -273;
+    public static final double LOWER_BOUND = -273;
 
     private DoubleArray array;
 
@@ -73,7 +73,7 @@ public class TemperatureSeriesAnalysis {
      */
     private void checkLowerBound(double[] temps) {
         for (double temp : temps) {
-            if (temp < lowerBound) {
+            if (temp < LOWER_BOUND) {
                 throw new InputMismatchException();
             }
         }
