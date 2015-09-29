@@ -396,4 +396,49 @@ public class TemperatureSeriesAnalysisTest {
 
         assertEquals(expectedResult, actualResult, EPS);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testFindTempsLessThen_emptyArray() {
+        double[] temps = {};
+        double tempValue = 42;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        analysis.findTempsLessThen(tempValue);
+    }
+
+    @Test
+    public void testFindTempsLessThen_arrayWithOneTemp_emptyArray() {
+        double[] temps = {5.0};
+        double tempValue = -4.5;
+        double[] expectedArray = {};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double[] actualArray = analysis.findTempsLessThen(tempValue);
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test
+    public void testFindTempsLessThen_arrayWithOneTemp_theSameArray() {
+        double[] temps = {5.0};
+        double tempValue = 10.6;
+        double[] expectedArray = {5.0};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double[] actualArray = analysis.findTempsLessThen(tempValue);
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test
+    public void testFindTempsLessThan_result() {
+        double[] temps = {0.3, -14, 1e9, -5.0};
+        double tempValue = 10.6;
+        double[] expectedArray = {0.3, -14, -5.0};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double[] actualArray = analysis.findTempsLessThen(tempValue);
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
 }

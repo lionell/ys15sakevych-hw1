@@ -87,6 +87,7 @@ public class TemperatureSeriesAnalysis {
 }
     
     public double[] findTempsLessThen(double tempValue) {
+        checkEmptyArray();
         return null;
     }
     
