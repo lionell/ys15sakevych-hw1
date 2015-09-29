@@ -431,6 +431,18 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
+    public void testFindTempsLessThan_arrayHasTempsEqualToTempValue() {
+        double[] temps = {0.3, -10.5, 10.6, -5.0};
+        double tempValue = 10.6;
+        double[] expectedArray = {0.3, -10.5, -5.0};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double[] actualArray = analysis.findTempsLessThen(tempValue);
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test
     public void testFindTempsLessThan_result() {
         double[] temps = {0.3, -14, 1e9, -5.0};
         double tempValue = 10.6;
@@ -438,6 +450,63 @@ public class TemperatureSeriesAnalysisTest {
 
         TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
         double[] actualArray = analysis.findTempsLessThen(tempValue);
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testFindTempsGreaterThen_emptyArray() {
+        double[] temps = {};
+        double tempValue = 42;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        analysis.findTempsGreaterThen(tempValue);
+    }
+
+    @Test
+    public void testFindTempsGreaterThen_arrayWithOneTemp_emptyArray() {
+        double[] temps = {-5.0};
+        double tempValue = -4.5;
+        double[] expectedArray = {};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double[] actualArray = analysis.findTempsGreaterThen(tempValue);
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test
+    public void testFindTempsGreaterThen_arrayWithOneTemp_theSameArray() {
+        double[] temps = {5.0};
+        double tempValue = -10.6;
+        double[] expectedArray = {5.0};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double[] actualArray = analysis.findTempsGreaterThen(tempValue);
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test
+    public void testFindTempsGreaterThan_arrayHasTempsEqualToTempValue() {
+        double[] temps = {11.3, 1e5, 0.0, 10.6, -5.0};
+        double tempValue = 10.6;
+        double[] expectedArray = {11.3, 1e5};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double[] actualArray = analysis.findTempsGreaterThen(tempValue);
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test
+    public void testFindTempsGreaterThan_result() {
+        double[] temps = {14, -7.5, 0.3, 1e9, -5.0};
+        double tempValue = 10.6;
+        double[] expectedArray = {14, 0.3, 1e9};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double[] actualArray = analysis.findTempsGreaterThen(tempValue);
 
         assertArrayEquals(expectedArray, actualArray, EPS);
     }
