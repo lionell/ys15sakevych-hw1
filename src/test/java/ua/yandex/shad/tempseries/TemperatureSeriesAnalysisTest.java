@@ -219,4 +219,37 @@ public class TemperatureSeriesAnalysisTest {
         TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
         analysis.max();
     }
+
+    @Test
+    public void testMax_arrayWithOneTemp() {
+        double[] temps = {56.0};
+        double expectedResult = 56.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.max();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test
+    public void testMax_arrayWithEqualTemps() {
+        double[] temps = {-4.0, -4.0, -4.0, -4e0};
+        double expectedResult = -4.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.max();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test
+    public void testMax_result() {
+        double[] temps = {2.0, -14.0, -2.0, 100.0};
+        double expectedResult = 100.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.max();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
 }
