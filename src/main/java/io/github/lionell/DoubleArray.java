@@ -110,12 +110,24 @@ public class DoubleArray {
 
     /**
      * Adds new element to the end of array
+     *
      * @param value value of element to add
      */
     public void add(double value) {
         ensureCapacity(size + 1);
         data[size] = value;
         size++;
+    }
+
+    /**
+     * Adds elements from given double[] to the end of array
+     *
+     * @param nums array of doubles to add
+     */
+    public void add(double[] nums) {
+        ensureCapacity(size + nums.length);
+        System.arraycopy(nums, 0, data, size, nums.length);
+        size += nums.length;
     }
 
     /**

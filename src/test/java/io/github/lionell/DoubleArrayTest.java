@@ -244,23 +244,72 @@ public class DoubleArrayTest {
     }
 
     @Test
-    public void testIsEmpty_emptyArray_true() {
-        boolean expectedResult = true;
+    public void testAddRange_emptyArray_newArray() {
+        double[] nums = {2.0, -5e6, 14.5, -4, 7};
+        double[] newNums = {};
+        double[] expectedArray = {2.0, -5e6, 14.5, -4, 7};
 
+        DoubleArray array = new DoubleArray(nums);
+        array.add(newNums);
+        double[] actualArray = array.toArray();
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test
+    public void testAddRange_someArray_newArraySize() {
+        double[] nums = {2.0, -5e6, 14.5, -4, 7};
+        double[] newNums = {45, 14, -5, -200};
+        int expectedSize = 9;
+
+        DoubleArray array = new DoubleArray(nums);
+        array.add(newNums);
+        int actualSize = array.size();
+
+        assertEquals(expectedSize, actualSize);
+    }
+
+    @Test
+    public void testAddRange_someArray_newArrayCapacity() {
+        double[] nums = {2.0, -5e6, 14.5, -4, 7};
+        double[] newNums = {45, 14, -5, -200};
+        int expectedCapacity = 10;
+
+        DoubleArray array = new DoubleArray(nums);
+        array.add(newNums);
+        int actualCapacity = array.capacity();
+
+        assertEquals(expectedCapacity, actualCapacity);
+    }
+
+    @Test
+    public void testAddRange_someArray_newArray() {
+        double[] nums = {2.0, -5e6, 14.5, 7};
+        double[] newNums = {45, -1, -1e-3};
+        double[] expectedArray = {2.0, -5e6, 14.5, 7, 45, -1, -1e-3};
+
+        DoubleArray array = new DoubleArray(nums);
+        array.add(newNums);
+        double[] actualArray = array.toArray();
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test
+    public void testIsEmpty_emptyArray_true() {
         DoubleArray array = new DoubleArray();
         boolean actualResult = array.isEmpty();
 
-        assertEquals(expectedResult, actualResult);
+        assertTrue(actualResult);
     }
 
     @Test
     public void testIsEmpty_notEmptyArray_false() {
         double[] nums = {1.0, 2.0};
-        boolean expectedResult = false;
 
         DoubleArray array = new DoubleArray(nums);
         boolean actualResult = array.isEmpty();
 
-        assertEquals(expectedResult, actualResult);
+        assertFalse(actualResult);
     }
 }
