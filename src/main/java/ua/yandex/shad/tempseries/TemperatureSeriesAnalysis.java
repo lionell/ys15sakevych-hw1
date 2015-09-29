@@ -72,7 +72,7 @@ public class TemperatureSeriesAnalysis {
     
     public double findTempClosestToValue(double tempValue) {
         checkEmptyArray();
-        return 0;
+        return array.get(0);
 }
     
     public double[] findTempsLessThen(double tempValue) {
