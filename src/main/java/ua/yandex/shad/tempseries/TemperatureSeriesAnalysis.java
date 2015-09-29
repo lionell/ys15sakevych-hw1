@@ -49,7 +49,11 @@ public class TemperatureSeriesAnalysis {
      
     public double max() {
         checkEmptyArray();
-        return 0;
+        double result = array.get(0);
+        for (int i = 1; i < array.size(); ++i) {
+            result = Math.max(result, array.get(i));
+        }
+        return result;
     }
     
     public double findTempClosestToZero() {
