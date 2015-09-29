@@ -431,7 +431,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempsLessThan_arrayHasTempsEqualToTempValue() {
+    public void testFindTempsLessThen_arrayHasTempsEqualToTempValue() {
         double[] temps = {0.3, -10.5, 10.6, -5.0};
         double tempValue = 10.6;
         double[] expectedArray = {0.3, -10.5, -5.0};
@@ -443,7 +443,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempsLessThan_result() {
+    public void testFindTempsLessThen_result() {
         double[] temps = {0.3, -14, 1e9, -5.0};
         double tempValue = 10.6;
         double[] expectedArray = {0.3, -14, -5.0};
@@ -488,7 +488,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempsGreaterThan_arrayHasTempsEqualToTempValue() {
+    public void testFindTempsGreaterThen_arrayHasTempsEqualToTempValue() {
         double[] temps = {11.3, 1e5, 0.0, 10.6, -5.0};
         double tempValue = 10.6;
         double[] expectedArray = {11.3, 1e5};
@@ -500,7 +500,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempsGreaterThan_result() {
+    public void testFindTempsGreaterThen_result() {
         double[] temps = {14, -7.5, 0.3, 1e9, -5.0};
         double tempValue = 10.6;
         double[] expectedArray = {14, 1e9};

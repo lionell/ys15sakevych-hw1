@@ -99,7 +99,15 @@ public class TemperatureSeriesAnalysis {
     }
     
     public double[] findTempsGreaterThen(double tempValue) {
-        return null;
+        checkEmptyArray();
+        DoubleArray temps = new DoubleArray();
+        for (int i = 0; i < array.size(); ++i) {
+            double temp = array.get(i);
+            if (temp > tempValue) {
+                temps.add(temp);
+            }
+        }
+        return temps.toArray();
     }
     
     public TempSummaryStatistics summaryStatistics() {
