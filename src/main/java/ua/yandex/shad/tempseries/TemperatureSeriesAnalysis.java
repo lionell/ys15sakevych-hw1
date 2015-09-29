@@ -62,9 +62,8 @@ public class TemperatureSeriesAnalysis {
         double result = array.get(0);
         for (int i = 1; i < array.size(); ++i) {
             double temp = array.get(i);
-            if (Math.abs(temp) < Math.abs(result) ||
-                Math.abs(temp) == Math.abs(result) &&
-                temp > result) {
+            if (Math.abs(temp) < Math.abs(result)
+                || Math.abs(temp) == Math.abs(result) && temp > result) {
                 result = temp;
             }
         }

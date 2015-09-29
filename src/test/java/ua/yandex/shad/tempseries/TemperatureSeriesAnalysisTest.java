@@ -295,7 +295,18 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempClosestToZero_twoTempsWithEqualAbs() {
+    public void testFindTempClosestToZero_twoTempsWithEqualAbsFirstNegative() {
+        double[] temps = {-2.0, 14.0, 2.0, 100.0};
+        double expectedResult = 2.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.findTempClosestToZero();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test
+    public void testFindTempClosestToZero_twoTempsWithEqualAbsFirstPositive() {
         double[] temps = {2.0, 14.0, -2.0, 100.0};
         double expectedResult = 2.0;
 
