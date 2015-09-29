@@ -282,4 +282,26 @@ public class TemperatureSeriesAnalysisTest {
 
         assertEquals(expectedResult, actualResult, EPS);
     }
+
+    @Test
+    public void testFindTempClosestToZero_arrayWithNegativeAndPositiveTemps() {
+        double[] temps = {-20.0, 14.0, -2.0, 100.0};
+        double expectedResult = -2.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.findTempClosestToZero();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test
+    public void testFindTempClosestToZero_twoTempsWithEqualAbs() {
+        double[] temps = {2.0, 14.0, -2.0, 100.0};
+        double expectedResult = 2.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.findTempClosestToZero();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
 }
