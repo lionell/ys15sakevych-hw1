@@ -491,7 +491,7 @@ public class TemperatureSeriesAnalysisTest {
     public void testFindTempsGreaterThen_arrayHasTempsEqualToTempValue() {
         double[] temps = {11.3, 1e5, 0.0, 10.6, -5.0};
         double tempValue = 10.6;
-        double[] expectedArray = {11.3, 1e5};
+        double[] expectedArray = {11.3, 1e5, 10.6};
 
         TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
         double[] actualArray = analysis.findTempsGreaterThen(tempValue);

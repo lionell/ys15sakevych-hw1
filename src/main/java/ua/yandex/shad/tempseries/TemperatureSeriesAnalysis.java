@@ -103,7 +103,7 @@ public class TemperatureSeriesAnalysis {
         DoubleArray temps = new DoubleArray();
         for (int i = 0; i < array.size(); ++i) {
             double temp = array.get(i);
-            if (temp > tempValue) {
+            if (temp >= tempValue) {
                 temps.add(temp);
             }
         }
