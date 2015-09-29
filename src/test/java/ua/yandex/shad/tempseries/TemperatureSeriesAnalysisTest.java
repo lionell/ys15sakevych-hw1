@@ -284,7 +284,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempClosestToZero_arrayWithNegativeAndPositiveTemps() {
+    public void testFindTempClosestToZero_arrayWithDifferentTemps() {
         double[] temps = {-20.0, 14.0, -2.0, 100.0};
         double expectedResult = -2.0;
 
@@ -295,7 +295,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempClosestToZero_twoTempsWithEqualAbsFirstNegative() {
+    public void testFindTempClosestToZero_twoTempsWithEqualDistFirstNegative() {
         double[] temps = {-2.0, 14.0, 2.0, 100.0};
         double expectedResult = 2.0;
 
@@ -306,7 +306,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testFindTempClosestToZero_twoTempsWithEqualAbsFirstPositive() {
+    public void testFindTempClosestToZero_twoTempsWithEqualDistFirstPositive() {
         double[] temps = {2.0, 14.0, -2.0, 100.0};
         double expectedResult = 2.0;
 
@@ -354,6 +354,42 @@ public class TemperatureSeriesAnalysisTest {
         double[] temps = {40.0, 27.0, 35.0, 30.0};
         double tempValue = 60.0;
         double expectedResult = 40.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.findTempClosestToValue(tempValue);
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test
+    public void testFindTempClosestToValue_arrayWithDifferentTemps() {
+        double[] temps = {-40.0, 27.0, -35.0, 2.0, 30.0};
+        double tempValue = 10.0;
+        double expectedResult = 2.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.findTempClosestToValue(tempValue);
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test
+    public void testFindTempClosestToValue_twoTempsWithEqualDistFirstPositive() {
+        double[] temps = {3.0, 14.0, -1.0, 100.0};
+        double tempValue = 1.0;
+        double expectedResult = 3.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.findTempClosestToValue(tempValue);
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test
+    public void testFindTempClosestToValue_twoTempsWithEqualDistFirstNegative() {
+        double[] temps = {-1.0, 14.0, 3.0, 100.0};
+        double tempValue = 1.0;
+        double expectedResult = 3.0;
 
         TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
         double actualResult = analysis.findTempClosestToValue(tempValue);
