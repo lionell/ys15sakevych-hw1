@@ -1,7 +1,10 @@
 package ua.yandex.shad.tempseries;
 
 import static org.junit.Assert.*;
+
+import com.sun.javafx.util.TempState;
 import org.junit.Test;
+import org.omg.CORBA.portable.UnknownException;
 
 /**
  * Test structure
@@ -78,5 +81,125 @@ public class TempSummaryStatisticsTest {
         double actualMaxTemp = statistics.getMaxTemp();
 
         assertEquals(expectedMaxTemp, actualMaxTemp, EPS);
+    }
+
+    @Test
+    public void testEquals_nullReference_false() {
+        double avgTemp = 1.1;
+        double devTemp = 2.2;
+        double minTemp = 3.3;
+        double maxTemp = 4.4;
+        Object other = null;
+
+        TempSummaryStatistics statistics =
+                new TempSummaryStatistics(avgTemp, devTemp, minTemp, maxTemp);
+        boolean result = statistics.equals(other);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testEquals_typeMismatch_false() {
+        double avgTemp = 1.1;
+        double devTemp = 2.2;
+        double minTemp = 3.3;
+        double maxTemp = 4.4;
+        Object other = new Double(1);
+
+        TempSummaryStatistics statistics =
+                new TempSummaryStatistics(avgTemp, devTemp, minTemp, maxTemp);
+        boolean result = statistics.equals(other);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testEquals_unequalAvgTemp_false() {
+        double avgTemp = 1.1;
+        double devTemp = 2.2;
+        double minTemp = 3.3;
+        double maxTemp = 4.4;
+        TempSummaryStatistics other = new TempSummaryStatistics(0.1, 2.2, 3.3, 4.4);
+
+        TempSummaryStatistics statistics =
+                new TempSummaryStatistics(avgTemp, devTemp, minTemp, maxTemp);
+        boolean result = statistics.equals(other);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testEquals_unequalDevTemp_false() {
+        double avgTemp = 1.1;
+        double devTemp = 2.2;
+        double minTemp = 3.3;
+        double maxTemp = 4.4;
+        TempSummaryStatistics other = new TempSummaryStatistics(1.1, 0.2, 3.3, 4.4);
+
+        TempSummaryStatistics statistics =
+                new TempSummaryStatistics(avgTemp, devTemp, minTemp, maxTemp);
+        boolean result = statistics.equals(other);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testEquals_unequalMinTemp_false() {
+        double avgTemp = 1.1;
+        double devTemp = 2.2;
+        double minTemp = 3.3;
+        double maxTemp = 4.4;
+        TempSummaryStatistics other = new TempSummaryStatistics(1.1, 2.2, 0.3, 4.4);
+
+        TempSummaryStatistics statistics =
+                new TempSummaryStatistics(avgTemp, devTemp, minTemp, maxTemp);
+        boolean result = statistics.equals(other);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testEquals_unequalMaxTemp_false() {
+        double avgTemp = 1.1;
+        double devTemp = 2.2;
+        double minTemp = 3.3;
+        double maxTemp = 4.4;
+        TempSummaryStatistics other = new TempSummaryStatistics(1.1, 2.2, 3.3, 0.4);
+
+        TempSummaryStatistics statistics =
+                new TempSummaryStatistics(avgTemp, devTemp, minTemp, maxTemp);
+        boolean result = statistics.equals(other);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testEquals_unequalObject_false() {
+        double avgTemp = 1.1;
+        double devTemp = 2.2;
+        double minTemp = 3.3;
+        double maxTemp = 4.4;
+        TempSummaryStatistics other = new TempSummaryStatistics(0.1, 2.2, 0.3, -4.4);
+
+        TempSummaryStatistics statistics =
+                new TempSummaryStatistics(avgTemp, devTemp, minTemp, maxTemp);
+        boolean result = statistics.equals(other);
+
+        assertFalse(result);
+    }
+
+    @Test
+    public void testEquals_equalObject_true() {
+        double avgTemp = 1.1;
+        double devTemp = 2.2;
+        double minTemp = 3.3;
+        double maxTemp = 4.4;
+        TempSummaryStatistics other = new TempSummaryStatistics(1.1, 2.2, 3.3, 4.4);
+
+        TempSummaryStatistics statistics =
+                new TempSummaryStatistics(avgTemp, devTemp, minTemp, maxTemp);
+        boolean result = statistics.equals(other);
+
+        assertTrue(result);
     }
 }
