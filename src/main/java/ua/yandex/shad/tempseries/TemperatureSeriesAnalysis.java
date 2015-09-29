@@ -71,6 +71,7 @@ public class TemperatureSeriesAnalysis {
     }
     
     public double findTempClosestToValue(double tempValue) {
+        checkEmptyArray();
         return 0;
 }
     

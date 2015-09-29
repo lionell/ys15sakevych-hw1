@@ -315,4 +315,13 @@ public class TemperatureSeriesAnalysisTest {
 
         assertEquals(expectedResult, actualResult, EPS);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testFindTempClosestToValue_emptyArray() {
+        double[] temps = {};
+        double tempValue = 42;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        analysis.findTempClosestToValue(tempValue);
+    }
 }
