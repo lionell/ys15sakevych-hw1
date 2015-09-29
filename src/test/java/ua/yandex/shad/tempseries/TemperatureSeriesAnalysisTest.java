@@ -532,4 +532,38 @@ public class TemperatureSeriesAnalysisTest {
 
         assertEquals(expectedStatistics, actualStatistics);
     }
+
+    @Test(expected = InputMismatchException.class)
+    public void testAddTemps_tempOutOfLowerBound() {
+        double[] temps = {14, -7.5, 0.3, 1e9, -5.0, 2.0};
+        double[] newTemps = {4.0, -274, 0.0};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        analysis.addTemps(newTemps);
+    }
+
+    @Test
+    public void testAddTemps_someTemps_newArray() {
+        double[] temps = {14, -7.5, 0.3, 1e9, -5.0, 2.0};
+        double[] newTemps = {4.0, -274, 0.0};
+        double[] expectedArray = {14, -7.5, 0.3, 1e9, -5.0, 2.0, 4.0, -274, 0.0};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        analysis.addTemps(newTemps);
+        double[] actualArray = analysis.getArray();
+
+        assertArrayEquals(expectedArray, actualArray, EPS);
+    }
+
+    @Test
+    public void testAddTemps_someArray_result() {
+        double[] temps = {14, -7.5, 0.3, 1e9, -5.0, 2.0};
+        double[] newTemps = {-4.0, -274, 0.0};
+        int expectedResult = 9;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        int actualResult = analysis.addTemps(newTemps);
+
+        assertEquals(expectedResult, actualResult);
+    }
 }
