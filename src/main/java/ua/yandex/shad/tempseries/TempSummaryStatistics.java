@@ -67,11 +67,16 @@ public class TempSummaryStatistics {
      * Overriding Object's equals implementation.
      * Checks two TempSummaryStatistics on equality.
      *
-     * @param example instance of TempSummaryStatistics to compare
-     * @return true, if objects are equal
+     * @param other should be instance of TempSummaryStatistics to compare
+     * @return true, if Statistics are equal
      *         false, otherwise
      */
-    public boolean equals(TempSummaryStatistics example) {
+    @Override
+    public boolean equals(Object other) {
+        if (other == null || other.getClass() != TempSummaryStatistics.class) {
+            return false;
+        }
+        TempSummaryStatistics example = (TempSummaryStatistics)other;
         return (example.getAvgTemp() == getAvgTemp()
                 && example.getDevTemp() == getDevTemp()
                 && example.getMinTemp() == getMinTemp()

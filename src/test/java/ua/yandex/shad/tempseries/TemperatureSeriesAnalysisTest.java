@@ -521,11 +521,11 @@ public class TemperatureSeriesAnalysisTest {
 
     @Test
     public void testSummaryStatistics_result() {
-        double[] temps = {14, -7.5, 0.3, 0.0, -5.0, -1e5};
-        TempSummaryStatistics expectedStatistics = new TempSummaryStatistics(1.0,  // avgTemp
+        double[] temps = {9.0, 4.0, 5.0, 4.0, 5.0, 2.0, 7.0, 4.0};
+        TempSummaryStatistics expectedStatistics = new TempSummaryStatistics(5.0,  // avgTemp
                                                                              2.0,  // devTemp
-                                                                             3.0,  // minTemp
-                                                                             4.0); // maxTemp
+                                                                             2.0,  // minTemp
+                                                                             9.0); // maxTemp
 
         TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
         TempSummaryStatistics actualStatistics = analysis.summaryStatistics();
