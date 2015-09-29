@@ -62,4 +62,19 @@ public class TempSummaryStatistics {
     public double getMaxTemp() {
         return maxTemp;
     }
+
+    /**
+     * Overriding Object's equals implementation.
+     * Checks two TempSummaryStatistics on equality.
+     *
+     * @param example instance of TempSummaryStatistics to compare
+     * @return true, if objects are equal
+     *         false, otherwise
+     */
+    public boolean equals(TempSummaryStatistics example) {
+        return (example.getAvgTemp() == getAvgTemp()
+                && example.getDevTemp() == getDevTemp()
+                && example.getMinTemp() == getMinTemp()
+                && example.getMaxTemp() == getMaxTemp());
+    }
 }

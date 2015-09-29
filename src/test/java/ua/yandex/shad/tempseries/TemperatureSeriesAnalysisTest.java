@@ -510,4 +510,26 @@ public class TemperatureSeriesAnalysisTest {
 
         assertArrayEquals(expectedArray, actualArray, EPS);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testSummaryStatistics_emptyArray() {
+        double[] temps = {};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        analysis.summaryStatistics();
+    }
+
+    @Test
+    public void testSummaryStatistics_result() {
+        double[] temps = {14, -7.5, 0.3, 0.0, -5.0, -1e5};
+        TempSummaryStatistics expectedStatistics = new TempSummaryStatistics(1.0,  // avgTemp
+                                                                             2.0,  // devTemp
+                                                                             3.0,  // minTemp
+                                                                             4.0); // maxTemp
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        TempSummaryStatistics actualStatistics = analysis.summaryStatistics();
+
+        assertEquals(expectedStatistics, actualStatistics);
+    }
 }
