@@ -25,7 +25,7 @@ public class TemperatureSeriesAnalysis {
         for (int i = 0; i < array.size(); ++i) {
             sum += array.get(i);
         }
-        return (sum / array.size());
+        return sum / array.size();
     }    
     
     public double deviation() {
