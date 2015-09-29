@@ -120,7 +120,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testAverage_correctResult() {
+    public void testAverage_result() {
         double[] temps = {1.0, -2.0, 3.0, 0.0};
         double expectedResult = 0.5;
 
@@ -161,7 +161,7 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testDeviation_correctResult() {
+    public void testDeviation_result() {
         double[] temps = {2.0, -2.0, -2.0, 2.0};
         double expectedResult = 2.0;
 
@@ -169,5 +169,54 @@ public class TemperatureSeriesAnalysisTest {
         double actualResult = analysis.deviation();
 
         assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testMin_emptyArray() {
+        double[] temps = {};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        analysis.min();
+    }
+
+    @Test
+    public void testMin_arrayWithOneTemp() {
+        double[] temps = {-7.0};
+        double expectedResult = -7.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.min();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test
+    public void testMin_arrayWithEqualTemps() {
+        double[] temps = {-4.0, -4.0, -4.0, -4e0};
+        double expectedResult = -4.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.min();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test
+    public void testMin_result() {
+        double[] temps = {2.0, -14.0, -2.0, 100.0};
+        double expectedResult = -14.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.min();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testMax_emptyArray() {
+        double[] temps = {};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        analysis.max();
     }
 }
