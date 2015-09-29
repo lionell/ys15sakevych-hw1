@@ -252,4 +252,34 @@ public class TemperatureSeriesAnalysisTest {
 
         assertEquals(expectedResult, actualResult, EPS);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testFindTempClosestToZero_emptyArray() {
+        double[] temps = {};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        analysis.findTempClosestToZero();
+    }
+
+    @Test
+    public void testFindTempClosestToZero_arrayWithOneTemp() {
+        double[] temps = {56.0};
+        double expectedResult = 56.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.findTempClosestToZero();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test
+    public void testFindTempClosestToZero_onlyPositiveTemps() {
+        double[] temps = {2.0, 14.0, 2.0, 100.0};
+        double expectedResult = 2.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.findTempClosestToZero();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
 }
