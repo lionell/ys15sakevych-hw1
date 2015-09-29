@@ -6,6 +6,7 @@ import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
 
+    public static final double EPS = 5e-5;
     public static final double LOWER_BOUND = -273;
 
     private DoubleArray array;
@@ -57,7 +58,17 @@ public class TemperatureSeriesAnalysis {
     }
     
     public double findTempClosestToZero() {
-        return 0;
+        checkEmptyArray();
+        double result = array.get(0);
+        for (int i = 1; i < array.size(); ++i) {
+            double temp = array.get(i);
+            if (Math.abs(temp) < Math.abs(result) ||
+                Math.abs(temp) == Math.abs(result) &&
+                temp > result) {
+                result = temp;
+            }
+        }
+        return result;
     }
     
     public double findTempClosestToValue(double tempValue) {
