@@ -503,7 +503,7 @@ public class TemperatureSeriesAnalysisTest {
     public void testFindTempsGreaterThan_result() {
         double[] temps = {14, -7.5, 0.3, 1e9, -5.0};
         double tempValue = 10.6;
-        double[] expectedArray = {14, 0.3, 1e9};
+        double[] expectedArray = {14, 1e9};
 
         TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
         double[] actualArray = analysis.findTempsGreaterThen(tempValue);
