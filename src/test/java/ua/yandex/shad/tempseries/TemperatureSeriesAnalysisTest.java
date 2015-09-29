@@ -75,7 +75,7 @@ public class TemperatureSeriesAnalysisTest {
     public void testTempsConstructor_tempOutOfLowerBound() {
         double[] temps = {1.0, -274.0, 2.0};
 
-        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        new TemperatureSeriesAnalysis(temps);
     }
 
     @Test
