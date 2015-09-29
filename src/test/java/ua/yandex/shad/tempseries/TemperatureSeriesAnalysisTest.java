@@ -89,10 +89,29 @@ public class TemperatureSeriesAnalysisTest {
         assertArrayEquals(expectedArray, actualArray, EPS);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testAverage_emptyArray() {
+        double[] temps = {};
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        analysis.average();
+    }
+
     @Test
     public void testAverage_arrayWithOneTemp() {
         double[] temps = {1.0};
         double expectedResult = 1.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.average();
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
+
+    @Test
+    public void testAverage_arrayWithEqualTemps() {
+        double[] temps = {-7.0, -7.0, -7.0, -7e0};
+        double expectedResult = -7.0;
 
         TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
         double actualResult = analysis.average();
@@ -112,11 +131,11 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testAverage_emptyArray() {
+    public void testDeviation_emptyArray() {
         double[] temps = {};
 
         TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
-        analysis.average();
+        analysis.deviation();
     }
 
     @Test
@@ -131,9 +150,9 @@ public class TemperatureSeriesAnalysisTest {
     }
 
     @Test
-    public void testDeviation_correctResult() {
-        double[] temps = {1.0, -2.0, 3.0, 0.0};
-        double expectedResult = 0.5;
+    public void testDeviation_arrayWithEqualTemps() {
+        double[] temps = {-4.0, -4.0, -4.0, -4e0};
+        double expectedResult = 0.0;
 
         TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
         double actualResult = analysis.deviation();
@@ -141,11 +160,14 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expectedResult, actualResult, EPS);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testDeviation_emptyArray() {
-        double[] temps = {};
+    @Test
+    public void testDeviation_correctResult() {
+        double[] temps = {2.0, -2.0, -2.0, 2.0};
+        double expectedResult = 2.0;
 
         TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
-        analysis.deviation();
+        double actualResult = analysis.deviation();
+
+        assertEquals(expectedResult, actualResult, EPS);
     }
 }

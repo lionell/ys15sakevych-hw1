@@ -29,7 +29,13 @@ public class TemperatureSeriesAnalysis {
     }    
     
     public double deviation() {
-        return 0;
+        checkEmptyArray();
+        double avg = average();
+        double sum = 0.0;
+        for (int i = 0; i < array.size(); ++i) {
+            sum += (array.get(i) - avg) * (array.get(i) - avg);
+        }
+        return Math.sqrt(sum / array.size());
     }
     
     public double min() {
