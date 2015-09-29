@@ -30,6 +30,7 @@
 *.iws
 
 ## Plugin-specific files:
+/src/main/java/io/github/lionell/Debug.java
 
 # IntelliJ
 /out/

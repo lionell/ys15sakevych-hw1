@@ -1,7 +1,6 @@
 package ua.yandex.shad.tempseries;
 
 import io.github.lionell.DoubleArray;
-
 import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
@@ -62,8 +61,9 @@ public class TemperatureSeriesAnalysis {
         double result = array.get(0);
         for (int i = 1; i < array.size(); ++i) {
             double temp = array.get(i);
-            if (Math.abs(temp) < Math.abs(result)
-                || Math.abs(temp) == Math.abs(result) && temp > result) {
+            if (Math.abs(temp) - Math.abs(result) < EPS
+                    || Math.abs(Math.abs(temp) - Math.abs(result)) < EPS
+                    && result - temp < EPS) {
                 result = temp;
             }
         }
@@ -75,7 +75,11 @@ public class TemperatureSeriesAnalysis {
         double result = array.get(0);
         for (int i = 1; i < array.size(); ++i) {
             double temp = array.get(i);
-            if (temp < result) {
+            if (Math.abs(temp - tempValue)
+                    - Math.abs(result - tempValue) < EPS
+                    || Math.abs(Math.abs(temp - tempValue)
+                    - Math.abs(result - tempValue)) < EPS
+                    && result - temp < EPS) {
                 result = temp;
             }
         }
