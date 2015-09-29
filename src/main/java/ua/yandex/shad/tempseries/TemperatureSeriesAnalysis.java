@@ -39,10 +39,16 @@ public class TemperatureSeriesAnalysis {
     }
     
     public double min() {
-        return 0;
+        checkEmptyArray();
+        double result = array.get(0);
+        for (int i = 1; i < array.size(); ++i) {
+            result = Math.min(result, array.get(i));
+        }
+        return result;
     }
      
     public double max() {
+        checkEmptyArray();
         return 0;
     }
     
