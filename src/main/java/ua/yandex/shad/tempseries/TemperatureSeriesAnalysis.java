@@ -116,6 +116,8 @@ public class TemperatureSeriesAnalysis {
     }
     
     public int addTemps(double[] temps) {
+        checkLowerBound(temps);
+        array.add(temps);
         return 0;
     }
 
