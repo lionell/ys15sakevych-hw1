@@ -324,4 +324,16 @@ public class TemperatureSeriesAnalysisTest {
         TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
         analysis.findTempClosestToValue(tempValue);
     }
+
+    @Test
+    public void testFindTempClosestToValue_arrayWithOneTemp() {
+        double[] temps = {56.0};
+        double tempValue = 45.78;
+        double expectedResult = 56.0;
+
+        TemperatureSeriesAnalysis analysis = new TemperatureSeriesAnalysis(temps);
+        double actualResult = analysis.findTempClosestToValue(tempValue);
+
+        assertEquals(expectedResult, actualResult, EPS);
+    }
 }
