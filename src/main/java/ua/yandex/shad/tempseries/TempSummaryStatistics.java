@@ -2,6 +2,8 @@ package ua.yandex.shad.tempseries;
 
 public class TempSummaryStatistics {
 
+    public static final double EPS = 5e-5;
+
     /**
      * Average temperature from array.
      */
@@ -73,13 +75,13 @@ public class TempSummaryStatistics {
      */
     @Override
     public boolean equals(Object other) {
-        if (other == null || other.getClass() != TempSummaryStatistics.class) {
+        if (other == null || other.getClass() != this.getClass()) {
             return false;
         }
         TempSummaryStatistics example = (TempSummaryStatistics)other;
-        return (example.getAvgTemp() == getAvgTemp()
-                && example.getDevTemp() == getDevTemp()
-                && example.getMinTemp() == getMinTemp()
-                && example.getMaxTemp() == getMaxTemp());
+        return Math.abs(example.getAvgTemp() - getAvgTemp()) < EPS
+                && Math.abs(example.getDevTemp() - getDevTemp()) < EPS
+                && Math.abs(example.getMinTemp() - getMinTemp()) < EPS
+                && Math.abs(example.getMaxTemp() - getMaxTemp()) < EPS;
     }
 }
