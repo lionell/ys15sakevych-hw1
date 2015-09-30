@@ -91,12 +91,12 @@ public class TempSummaryStatistics {
      */
     @Override
     public int hashCode() {
-        final int prime = 31;
+        final int PRIME = 31;
         int result = 1;
-        result = prime * result + (int) getAvgTemp();
-        result = prime * result + (int) getDevTemp();
-        result = prime * result + (int) getMinTemp();
-        result = prime * result + (int) getMaxTemp();
+        result = PRIME * result + (int) getAvgTemp();
+        result = PRIME * result + (int) getDevTemp();
+        result = PRIME * result + (int) getMinTemp();
+        result = PRIME * result + (int) getMaxTemp();
         return result;
     }
 }
