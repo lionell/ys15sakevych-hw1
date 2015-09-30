@@ -2,9 +2,7 @@ package ua.yandex.shad.tempseries;
 
 import static org.junit.Assert.*;
 
-import com.sun.javafx.util.TempState;
 import org.junit.Test;
-import org.omg.CORBA.portable.UnknownException;
 
 /**
  * Test structure
