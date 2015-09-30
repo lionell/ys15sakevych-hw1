@@ -84,4 +84,19 @@ public class TempSummaryStatistics {
                 && Math.abs(example.getMinTemp() - getMinTemp()) < EPS
                 && Math.abs(example.getMaxTemp() - getMaxTemp()) < EPS;
     }
+
+    /**
+     * Overriding Object's hashCode implementation.
+     * @return some hash of object
+     */
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (int) getAvgTemp();
+        result = prime * result + (int) getDevTemp();
+        result = prime * result + (int) getMinTemp();
+        result = prime * result + (int) getMaxTemp();
+        return result;
+    }
 }

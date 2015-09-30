@@ -200,4 +200,34 @@ public class TempSummaryStatisticsTest {
 
         assertTrue(result);
     }
+
+    @Test
+    public void testHashCode_unequalObject_true() {
+        double avgTemp = 1.1;
+        double devTemp = 2.2;
+        double minTemp = 3.3;
+        double maxTemp = 4.4;
+        int expectedHashCode = new TempSummaryStatistics(0.1, -2.2, 3.3, 4.4).hashCode();
+
+        TempSummaryStatistics statistics =
+                new TempSummaryStatistics(avgTemp, devTemp, minTemp, maxTemp);
+        int actualHashCode = statistics.hashCode();
+
+        assertNotEquals(expectedHashCode, actualHashCode);
+    }
+
+    @Test
+    public void testHashCode_equalObject_true() {
+        double avgTemp = 1.1;
+        double devTemp = 2.2;
+        double minTemp = 3.3;
+        double maxTemp = 4.4;
+        int expectedHashCode = new TempSummaryStatistics(1.1, 2.2, 3.3, 4.4).hashCode();
+
+        TempSummaryStatistics statistics =
+                new TempSummaryStatistics(avgTemp, devTemp, minTemp, maxTemp);
+        int actualHashCode = statistics.hashCode();
+
+        assertEquals(expectedHashCode, actualHashCode);
+    }
 }
