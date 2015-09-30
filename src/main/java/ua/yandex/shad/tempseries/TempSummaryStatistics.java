@@ -78,7 +78,7 @@ public class TempSummaryStatistics {
         if (other == null || other.getClass() != this.getClass()) {
             return false;
         }
-        TempSummaryStatistics example = (TempSummaryStatistics)other;
+        TempSummaryStatistics example = (TempSummaryStatistics) other;
         return Math.abs(example.getAvgTemp() - getAvgTemp()) < EPS
                 && Math.abs(example.getDevTemp() - getDevTemp()) < EPS
                 && Math.abs(example.getMinTemp() - getMinTemp()) < EPS
